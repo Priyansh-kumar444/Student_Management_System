@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Departments · Student Management System</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+<div class="app">
+
+  <aside class="sidebar">
+    <div class="sidebar-brand">
+      <div class="logo-mark">SM</div>
+      <div class="brand-text">EduAdmin <span>Student Management</span></div>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="index.html"><i class="fa-solid fa-grip"></i><span>Dashboard</span></a>
+      <a href="students.html"><i class="fa-solid fa-user-graduate"></i><span>Students</span></a>
+      <a href="departments.html" class="active"><i class="fa-solid fa-building"></i><span>Departments</span></a>
+      <a href="courses.html"><i class="fa-solid fa-book"></i><span>Courses</span></a>
+      <a href="marks.html"><i class="fa-solid fa-pen-ruler"></i><span>Marks</span></a>
+      <a href="reports.html"><i class="fa-solid fa-chart-simple"></i><span>Reports</span></a>
+    </nav>
+    <div class="sidebar-foot">© 2026 EduAdmin<br>College Mini Project</div>
+  </aside>
+
+  <div class="main">
+    <header class="topbar">
+      <div class="topbar-title">
+        <h1>Departments</h1>
+        <p>Manage academic departments</p>
+      </div>
+      <div class="topbar-actions">
+        <button class="icon-btn theme-toggle" id="themeToggle" title="Toggle dark / light mode">
+          <i class="fa-solid fa-moon"></i>
+        </button>
+        <div class="admin-chip">
+          <div class="admin-avatar">AU</div>
+          <div class="admin-meta">
+            <strong>Admin User</strong>
+            <span>Administrator</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="content">
+
+      <div class="card card-pad">
+        <div class="card-head">
+          <div>
+            <h3>All Departments</h3>
+            <p>4 departments currently active</p>
+          </div>
+          <button class="btn btn-primary" onclick="document.getElementById('addDeptForm').scrollIntoView({behavior:'smooth'})">
+            <i class="fa-solid fa-plus"></i> Add Department
+          </button>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>Department ID</th><th>Department Name</th><th>Actions</th></tr>
+            </thead>
+            <tbody id="departmentsTableBody">
+              <tr><td colspan="3" class="muted">Loading departments...</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="card card-pad" id="addDeptForm" style="margin-top:20px;">
+        <div class="card-head">
+          <div>
+            <h3>Add Department</h3>
+            <p>Register a new department</p>
+          </div>
+        </div>
+        <form id="addDepartmentFormEl">
+          <div class="form-grid">
+            <div class="form-field">
+              <label for="deptId">Department ID</label>
+              <input type="text" id="deptId" placeholder="e.g. DPT-05">
+            </div>
+            <div class="form-field">
+              <label for="deptName">Department Name</label>
+              <input type="text" id="deptName" placeholder="e.g. Information Technology">
+            </div>
+          </div>
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary"><i class="fa-solid fa-floppy-disk"></i> Save Department</button>
+            <button type="reset" class="btn btn-outline"><i class="fa-solid fa-rotate-left"></i> Reset</button>
+          </div>
+        </form>
+      </div>
+
+    </main>
+  </div>
+</div>
+
+<script src="js/script.js"></script>
+<script>
+  document.getElementById('addDepartmentFormEl').addEventListener('submit', async function(e){
+    e.preventDefault();
+    const department = {
+      departmentId: document.getElementById('deptId').value,
+      departmentName: document.getElementById('deptName').value
+    };
+    const res = await fetch('/api/departments', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(department)
+    });
+    if (res.ok) { e.target.reset(); loadDepartments(); }
+    else alert('Could not save department. Check the server console.');
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard · Student Management System</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+<div class="app">
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar-brand">
+      <div class="logo-mark">SM</div>
+      <div class="brand-text">EduAdmin <span>Student Management</span></div>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="index.html" class="active"><i class="fa-solid fa-grip"></i><span>Dashboard</span></a>
+      <a href="students.html"><i class="fa-solid fa-user-graduate"></i><span>Students</span></a>
+      <a href="departments.html"><i class="fa-solid fa-building"></i><span>Departments</span></a>
+      <a href="courses.html"><i class="fa-solid fa-book"></i><span>Courses</span></a>
+      <a href="marks.html"><i class="fa-solid fa-pen-ruler"></i><span>Marks</span></a>
+      <a href="reports.html"><i class="fa-solid fa-chart-simple"></i><span>Reports</span></a>
+    </nav>
+    <div class="sidebar-foot">© 2026 EduAdmin<br>College Mini Project</div>
+  </aside>
+
+  <!-- Main -->
+  <div class="main">
+    <header class="topbar">
+      <div class="topbar-title">
+        <h1>Dashboard</h1>
+        <p>Overview of students, departments and courses</p>
+      </div>
+      <div class="topbar-actions">
+        <button class="icon-btn theme-toggle" id="themeToggle" title="Toggle dark / light mode">
+          <i class="fa-solid fa-moon"></i>
+        </button>
+        <div class="admin-chip">
+          <div class="admin-avatar">AU</div>
+          <div class="admin-meta">
+            <strong>Admin User</strong>
+            <span>Administrator</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="content">
+
+      <!-- Stat cards -->
+      <section class="stat-grid">
+        <div class="stat-card blue">
+          <div class="stat-icon"><i class="fa-solid fa-user-graduate"></i></div>
+          <div>
+            <div class="stat-value" id="statTotalStudents">--</div>
+            <div class="stat-label">Total Students</div>
+          </div>
+        </div>
+        <div class="stat-card green">
+          <div class="stat-icon"><i class="fa-solid fa-building"></i></div>
+          <div>
+            <div class="stat-value" id="statTotalDepartments">--</div>
+            <div class="stat-label">Total Departments</div>
+          </div>
+        </div>
+        <div class="stat-card orange">
+          <div class="stat-icon"><i class="fa-solid fa-book"></i></div>
+          <div>
+            <div class="stat-value" id="statTotalCourses">--</div>
+            <div class="stat-label">Total Courses</div>
+          </div>
+        </div>
+        <div class="stat-card purple">
+          <div class="stat-icon"><i class="fa-solid fa-chart-line"></i></div>
+          <div>
+            <div class="stat-value" id="statAvgPercentage">--</div>
+            <div class="stat-label">Average Student Percentage</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Recent students + Quick actions -->
+      <section class="dash-grid">
+        <div class="card card-pad">
+          <div class="card-head">
+            <div>
+              <h3>Recent Students</h3>
+              <p>Latest students added to the system</p>
+            </div>
+            <a href="students.html" class="btn btn-outline btn-sm">View All</a>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Student ID</th>
+                  <th>Student Name</th>
+                  <th>Department</th>
+                  <th>Semester</th>
+                </tr>
+              </thead>
+              <tbody id="recentStudentsBody">
+                <tr><td colspan="4" class="muted">Loading...</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="card card-pad">
+          <div class="card-head">
+            <div>
+              <h3>Quick Actions</h3>
+              <p>Jump straight into common tasks</p>
+            </div>
+          </div>
+          <div class="quick-actions">
+            <a href="add-student.html" class="btn btn-primary"><i class="fa-solid fa-user-plus"></i> Add Student</a>
+            <a href="departments.html" class="btn btn-outline"><i class="fa-solid fa-building"></i> Add Department</a>
+            <a href="courses.html" class="btn btn-outline"><i class="fa-solid fa-book-medical"></i> Add Course</a>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+</div>
+
+<script src="js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Add Student · Student Management System</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+<div class="app">
+
+  <aside class="sidebar">
+    <div class="sidebar-brand">
+      <div class="logo-mark">SM</div>
+      <div class="brand-text">EduAdmin <span>Student Management</span></div>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="index.html"><i class="fa-solid fa-grip"></i><span>Dashboard</span></a>
+      <a href="students.html" class="active"><i class="fa-solid fa-user-graduate"></i><span>Students</span></a>
+      <a href="departments.html"><i class="fa-solid fa-building"></i><span>Departments</span></a>
+      <a href="courses.html"><i class="fa-solid fa-book"></i><span>Courses</span></a>
+      <a href="marks.html"><i class="fa-solid fa-pen-ruler"></i><span>Marks</span></a>
+      <a href="reports.html"><i class="fa-solid fa-chart-simple"></i><span>Reports</span></a>
+    </nav>
+    <div class="sidebar-foot">© 2026 EduAdmin<br>College Mini Project</div>
+  </aside>
+
+  <div class="main">
+    <header class="topbar">
+      <div class="topbar-title">
+        <h1>Add Student</h1>
+        <p>Enter details to register a new student</p>
+      </div>
+      <div class="topbar-actions">
+        <button class="icon-btn theme-toggle" id="themeToggle" title="Toggle dark / light mode">
+          <i class="fa-solid fa-moon"></i>
+        </button>
+        <div class="admin-chip">
+          <div class="admin-avatar">AU</div>
+          <div class="admin-meta">
+            <strong>Admin User</strong>
+            <span>Administrator</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="content">
+
+      <a href="students.html" class="back-link"><i class="fa-solid fa-arrow-left"></i> Back to Students</a>
+
+      <div class="card card-pad">
+        <div class="card-head">
+          <div>
+            <h3>Student Details</h3>
+            <p>Fields marked with an ID are auto-generated but editable</p>
+          </div>
+        </div>
+
+        <form id="addStudentForm">
+          <div class="form-grid">
+            <div class="form-field">
+              <label for="studentId">Student ID</label>
+              <input type="text" id="studentId" placeholder="e.g. STU-2207">
+            </div>
+            <div class="form-field">
+              <label for="fullName">Full Name</label>
+              <input type="text" id="fullName" placeholder="e.g. Ananya Rao">
+            </div>
+            <div class="form-field">
+              <label for="age">Age</label>
+              <input type="number" id="age" placeholder="e.g. 20" min="15" max="35">
+            </div>
+            <div class="form-field">
+              <label for="gender">Gender</label>
+              <select id="gender">
+                <option value="">Select gender</option>
+                <option>Male</option>
+                <option>Female</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="form-field">
+              <label for="department">Department</label>
+              <select id="department">
+                <option value="">Select department</option>
+              </select>
+              <span style="font-size:11.5px;color:var(--text-muted);">Subjects for marks entry are taken automatically from this department's curriculum.</span>
+            </div>
+            <div class="form-field">
+              <label for="semester">Semester</label>
+              <select id="semester">
+                <option value="">Select semester</option>
+                <option value="1">Semester 1</option>
+                <option value="2">Semester 2</option>
+                <option value="3">Semester 3</option>
+                <option value="4">Semester 4</option>
+                <option value="5">Semester 5</option>
+                <option value="6">Semester 6</option>
+              </select>
+            </div>
+            <div class="form-field">
+              <label for="phone">Phone Number</label>
+              <input type="tel" id="phone" placeholder="e.g. +91 98765 43210">
+            </div>
+            <div class="form-field">
+              <label for="email">Email Address</label>
+              <input type="email" id="email" placeholder="e.g. ananya.rao@email.com">
+            </div>
+            <div class="form-field full">
+              <label for="address">Address</label>
+              <textarea id="address" placeholder="Street, City, State, PIN Code"></textarea>
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary"><i class="fa-solid fa-floppy-disk"></i> Save Student</button>
+            <button type="reset" class="btn btn-outline"><i class="fa-solid fa-rotate-left"></i> Reset</button>
+          </div>
+        </form>
+      </div>
+
+    </main>
+  </div>
+</div>
+
+<script src="js/script.js"></script>
+<script>
+  document.getElementById('addStudentForm').addEventListener('submit', async function(e){
+    e.preventDefault();
+    const student = {
+      studentId: document.getElementById('studentId').value,
+      fullName: document.getElementById('fullName').value,
+      age: parseInt(document.getElementById('age').value),
+      gender: document.getElementById('gender').value,
+      departmentId: document.getElementById('department').value,
+      semester: parseInt(document.getElementById('semester').value),
+      phoneNumber: document.getElementById('phone').value,
+      email: document.getElementById('email').value,
+      address: document.getElementById('address').value
+    };
+    const res = await fetch('/api/students', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(student)
+    });
+    if (res.ok) window.location.href = 'students.html';
+    else alert('Could not save student. Check the server console.');
+  });
+</script>
+</body>
+</html>

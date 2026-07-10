@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reports · Student Management System</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+<div class="app">
+
+  <aside class="sidebar">
+    <div class="sidebar-brand">
+      <div class="logo-mark">SM</div>
+      <div class="brand-text">EduAdmin <span>Student Management</span></div>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="index.html"><i class="fa-solid fa-grip"></i><span>Dashboard</span></a>
+      <a href="students.html"><i class="fa-solid fa-user-graduate"></i><span>Students</span></a>
+      <a href="departments.html"><i class="fa-solid fa-building"></i><span>Departments</span></a>
+      <a href="courses.html"><i class="fa-solid fa-book"></i><span>Courses</span></a>
+      <a href="marks.html"><i class="fa-solid fa-pen-ruler"></i><span>Marks</span></a>
+      <a href="reports.html" class="active"><i class="fa-solid fa-chart-simple"></i><span>Reports</span></a>
+    </nav>
+    <div class="sidebar-foot">© 2026 EduAdmin<br>College Mini Project</div>
+  </aside>
+
+  <div class="main">
+    <header class="topbar">
+      <div class="topbar-title">
+        <h1>Reports</h1>
+        <p>Summary statistics across the system</p>
+      </div>
+      <div class="topbar-actions">
+        <button class="icon-btn theme-toggle" id="themeToggle" title="Toggle dark / light mode">
+          <i class="fa-solid fa-moon"></i>
+        </button>
+        <div class="admin-chip">
+          <div class="admin-avatar">AU</div>
+          <div class="admin-meta">
+            <strong>Admin User</strong>
+            <span>Administrator</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="content">
+
+      <section class="stat-grid" style="grid-template-columns: repeat(3, 1fr);">
+        <div class="stat-card blue">
+          <div class="stat-icon"><i class="fa-solid fa-user-graduate"></i></div>
+          <div>
+            <div class="stat-value" id="reportTotalStudents">--</div>
+            <div class="stat-label">Total Students</div>
+          </div>
+        </div>
+        <div class="stat-card green">
+          <div class="stat-icon"><i class="fa-solid fa-building"></i></div>
+          <div>
+            <div class="stat-value" id="reportTotalDepartments">--</div>
+            <div class="stat-label">Total Departments</div>
+          </div>
+        </div>
+        <div class="stat-card orange">
+          <div class="stat-icon"><i class="fa-solid fa-book"></i></div>
+          <div>
+            <div class="stat-value" id="reportTotalCourses">--</div>
+            <div class="stat-label">Total Courses</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="report-grid">
+        <div class="card card-pad">
+          <div class="card-head">
+            <div>
+              <h3>Students by Department</h3>
+              <p>Distribution across departments</p>
+            </div>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>Department</th><th>Total Students</th></tr>
+              </thead>
+              <tbody id="deptReportBody">
+                <tr><td colspan="2" class="muted">Loading...</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="card card-pad">
+          <div class="card-head">
+            <div>
+              <h3>Students by Semester</h3>
+              <p>Distribution across semesters</p>
+            </div>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>Semester</th><th>Students</th></tr>
+              </thead>
+              <tbody id="semReportBody">
+                <tr><td colspan="2" class="muted">Loading...</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+</div>
+
+<script src="js/script.js"></script>
+</body>
+</html>

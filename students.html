@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Students · Student Management System</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+<div class="app">
+
+  <aside class="sidebar">
+    <div class="sidebar-brand">
+      <div class="logo-mark">SM</div>
+      <div class="brand-text">EduAdmin <span>Student Management</span></div>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="index.html"><i class="fa-solid fa-grip"></i><span>Dashboard</span></a>
+      <a href="students.html" class="active"><i class="fa-solid fa-user-graduate"></i><span>Students</span></a>
+      <a href="departments.html"><i class="fa-solid fa-building"></i><span>Departments</span></a>
+      <a href="courses.html"><i class="fa-solid fa-book"></i><span>Courses</span></a>
+      <a href="marks.html"><i class="fa-solid fa-pen-ruler"></i><span>Marks</span></a>
+      <a href="reports.html"><i class="fa-solid fa-chart-simple"></i><span>Reports</span></a>
+    </nav>
+    <div class="sidebar-foot">© 2026 EduAdmin<br>College Mini Project</div>
+  </aside>
+
+  <div class="main">
+    <header class="topbar">
+      <div class="topbar-title">
+        <h1>Student Management</h1>
+        <p>View, search and manage all students</p>
+      </div>
+      <div class="topbar-actions">
+        <button class="icon-btn theme-toggle" id="themeToggle" title="Toggle dark / light mode">
+          <i class="fa-solid fa-moon"></i>
+        </button>
+        <div class="admin-chip">
+          <div class="admin-avatar">AU</div>
+          <div class="admin-meta">
+            <strong>Admin User</strong>
+            <span>Administrator</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="content">
+
+      <div class="card card-pad">
+
+        <div class="filters-bar">
+          <div class="search-box">
+            <input type="text" id="studentSearch" placeholder="Search by Student ID or Name">
+          </div>
+          <select id="deptFilter">
+            <option value="">All Departments</option>
+            <option value="Computer Science">Computer Science</option>
+            <option value="Electronics">Electronics</option>
+            <option value="Mechanical">Mechanical</option>
+            <option value="Civil">Civil</option>
+          </select>
+          <select id="semFilter">
+            <option value="">All Semesters</option>
+            <option value="1">Semester 1</option>
+            <option value="2">Semester 2</option>
+            <option value="3">Semester 3</option>
+            <option value="4">Semester 4</option>
+            <option value="5">Semester 5</option>
+            <option value="6">Semester 6</option>
+          </select>
+          <a href="add-student.html" class="btn btn-primary"><i class="fa-solid fa-user-plus"></i> Add Student</a>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Student ID</th>
+                <th>Name</th>
+                <th>Department</th>
+                <th>Semester</th>
+                <th>Phone Number</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="studentsTableBody">
+              <tr><td colspan="6" class="muted">Loading students...</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="pagination">
+          <button>Previous</button>
+          <button class="active">1</button>
+          <button>2</button>
+          <button>Next</button>
+        </div>
+
+      </div>
+
+    </main>
+  </div>
+</div>
+
+<script src="js/script.js"></script>
+</body>
+</html>

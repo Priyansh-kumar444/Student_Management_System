@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Student Profile · Student Management System</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+<div class="app">
+
+  <aside class="sidebar">
+    <div class="sidebar-brand">
+      <div class="logo-mark">SM</div>
+      <div class="brand-text">EduAdmin <span>Student Management</span></div>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="index.html"><i class="fa-solid fa-grip"></i><span>Dashboard</span></a>
+      <a href="students.html" class="active"><i class="fa-solid fa-user-graduate"></i><span>Students</span></a>
+      <a href="departments.html"><i class="fa-solid fa-building"></i><span>Departments</span></a>
+      <a href="courses.html"><i class="fa-solid fa-book"></i><span>Courses</span></a>
+      <a href="marks.html"><i class="fa-solid fa-pen-ruler"></i><span>Marks</span></a>
+      <a href="reports.html"><i class="fa-solid fa-chart-simple"></i><span>Reports</span></a>
+    </nav>
+    <div class="sidebar-foot">© 2026 EduAdmin<br>College Mini Project</div>
+  </aside>
+
+  <div class="main">
+    <header class="topbar">
+      <div class="topbar-title">
+        <h1>Student Profile</h1>
+        <p>Full details and academic record</p>
+      </div>
+      <div class="topbar-actions">
+        <button class="icon-btn theme-toggle" id="themeToggle" title="Toggle dark / light mode">
+          <i class="fa-solid fa-moon"></i>
+        </button>
+        <div class="admin-chip">
+          <div class="admin-avatar">AU</div>
+          <div class="admin-meta">
+            <strong>Admin User</strong>
+            <span>Administrator</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="content">
+
+      <a href="students.html" class="back-link"><i class="fa-solid fa-arrow-left"></i> Back to Students</a>
+
+      <div class="profile-grid">
+
+        <div class="card profile-card">
+          <div class="admin-avatar" id="studentAvatar"></div>
+          <h2 id="studentName"></h2>
+          <p>
+            <span id="studentId"></span> ·
+            <span id="studentDepartment"></span>
+          </p>
+          <div class="info-list">
+            <div><span>Age</span><span id="studentAge"></span></div>
+            <div><span>Gender</span><span id="studentGender"></span></div>
+            <div><span>Phone</span><span id="studentPhone"></span></div>
+            <div><span>Email</span><span id="studentEmail"></span></div>
+          </div>
+        </div>
+
+        <div>
+          <div class="card card-pad">
+            <div class="card-head">
+              <div>
+                <h3>Student Information</h3>
+                <p>Personal and academic details</p>
+              </div>
+            </div>
+            <div class="detail-grid">
+              <div><label>Student ID</label><p id="detailStudentId"></p></div>
+              <div><label>Full Name</label><p id="detailFullName"></p></div>
+              <div><label>Department</label><p id="detailDepartment"></p></div>
+              <div><label>Semester</label><p id="detailSemester"></p></div>
+              <div><label>Age</label><p id="detailAge"></p></div>
+              <div><label>Gender</label><p id="detailGender"></p></div>
+              <div><label>Phone Number</label><p id="detailPhone"></p></div>
+              <div><label>Email Address</label><p id="detailEmail"></p></div>
+              <div><label>Address</label><p id="detailAddress"></p></div>
+            </div>
+          </div>
+
+          <div class="card card-pad" style="margin-top:20px;">
+            <div class="card-head">
+              <div>
+                <h3>Marks Summary</h3>
+                <p>Latest recorded marks by subject</p>
+              </div>
+            </div>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr><th>Subject</th><th>Marks</th></tr>
+                </thead>
+                <tbody id="marksTableBody"></tbody>
+              </table>
+            </div>
+            <div class="marks-summary-foot">
+              <div class="m-item"><span>Average</span><strong id="averageMarks">--</strong></div>
+              <div class="m-item"><span>Grade</span><strong id="studentGrade">--</strong></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </main>
+  </div>
+</div>
+
+<script src="js/script.js"></script>
+</body>
+</html>
